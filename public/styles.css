@@ -488,6 +488,15 @@ body {
         flex-direction: column;
         text-align: center;
         gap: 20px;
+        align-items: center;
+    }
+
+    .profile-image {
+        padding-top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 
     .profile-image i {
