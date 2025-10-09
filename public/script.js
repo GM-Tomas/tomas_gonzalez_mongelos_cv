@@ -169,11 +169,23 @@ document.addEventListener('DOMContentLoaded', function() {
             el.style.color = '#e8e8e8';
         });
         
-        document.querySelectorAll('.experience-item, .education-item, .certification-item, .skill-item, .language-item').forEach(el => {
+        document.querySelectorAll('.experience-item, .education-item, .skill-item, .language-item').forEach(el => {
             el.style.background = '#1a1a1a';
             el.style.color = '#ffffff';
             el.style.borderColor = '#2a2a2a';
             el.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.5)';
+        });
+        
+        // Certificados y workshops con contraste máximo
+        document.querySelectorAll('.certification-item').forEach(el => {
+            el.style.background = '#1a1a1a';
+            el.style.borderColor = '#2a2a2a';
+            el.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.5)';
+        });
+        
+        document.querySelectorAll('.certification-item h4').forEach(el => {
+            el.style.color = '#ffffff';
+            el.style.fontWeight = '600';
         });
         
         document.querySelectorAll('.section-title').forEach(el => {
@@ -263,11 +275,23 @@ document.addEventListener('DOMContentLoaded', function() {
             el.style.color = '';
         });
         
-        document.querySelectorAll('.experience-item, .education-item, .certification-item, .skill-item, .language-item').forEach(el => {
+        document.querySelectorAll('.experience-item, .education-item, .skill-item, .language-item').forEach(el => {
             el.style.background = '';
             el.style.color = '';
             el.style.borderColor = '';
             el.style.boxShadow = '';
+        });
+        
+        // Limpiar estilos de certificados y workshops
+        document.querySelectorAll('.certification-item').forEach(el => {
+            el.style.background = '';
+            el.style.borderColor = '';
+            el.style.boxShadow = '';
+        });
+        
+        document.querySelectorAll('.certification-item h4').forEach(el => {
+            el.style.color = '';
+            el.style.fontWeight = '';
         });
         
         document.querySelectorAll('.section-title').forEach(el => {
