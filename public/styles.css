@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1600px;
     margin: 0 auto;
     background: #fff;
     border-radius: 20px;
@@ -394,7 +394,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 6px 10px;
     background: #f8f9fa;
     border-radius: 12px;
     border-left: 4px solid #3498db;
@@ -555,7 +555,7 @@ body {
     }
 
     .skill-item {
-        padding: 12px 15px;
+        padding: 6px 10px;
     }
 
     .skill-name {
@@ -589,7 +589,7 @@ body {
     .certification-item,
     .skill-item,
     .language-item {
-        padding: 15px;
+        padding: 6px;
     }
 
     .certification-item h4 {
@@ -599,37 +599,155 @@ body {
 
 /* Print Styles */
 @media print {
+    @page {
+        margin: 0.5cm;
+        size: auto;
+    }
+
     body {
         background: white;
         padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
     .container {
         box-shadow: none;
         border-radius: 0;
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
     }
 
     .header {
-        background: #2c3e50 !important;
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+        padding: 20px 30px;
+        /* Reduced padding */
+    }
+
+    .name {
+        font-size: 2rem;
+        /* Slighly smaller name */
+        margin-bottom: 5px;
+    }
+
+    .title {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+
+    .profile-photo {
+        width: 150px;
+        /* Smaller photo */
+        height: 150px;
+    }
+
+    .main-content {
+        padding: 20px 30px;
+        /* Reduced padding */
     }
 
     .section {
+        margin-bottom: 20px;
+        /* Reduced margins between sections */
         break-inside: avoid;
-        margin-bottom: 30px;
     }
 
+    .section-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        padding-top: 10px;
+        /* Added top padding */
+    }
+
+    .section-content p {
+        font-size: 0.95rem;
+        /* Slightly smaller text */
+    }
+
+    /* Compact lists */
     .experience-item,
-    .education-item,
+    .education-item {
+        padding: 15px;
+        margin-bottom: 15px;
+        break-inside: avoid;
+        border: 1px solid #eee;
+        /* Add light border for separation since shadows don't print well */
+        box-shadow: none !important;
+    }
+
+    .responsibilities li {
+        margin-bottom: 4px;
+        font-size: 0.9rem;
+    }
+
     .certification-item,
     .skill-item {
         break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #eee;
+        padding: 6px;
+        /* Ensure compact padding */
+    }
+
+    /* Restore language item styles for print */
+    .language-item {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #eee;
+        padding: 15px 20px;
+        /* Restored original padding */
+        gap: 15px;
+        /* Increased gap */
+        white-space: nowrap;
+        /* Force single line */
+    }
+
+    /* Force grids to display well */
+    .technical-skills-grid,
+    .certifications-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* Force 3 columns for density */
+        gap: 10px;
+    }
+
+    .languages-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* Full width to ensure they fit in one line */
+        gap: 10px;
+    }
+
+    .certifications-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 cols for certs maybe better if names are long */
     }
 
     .star {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+        color: #ddd !important;
+        /* Force base color */
+    }
+
+    .star.filled {
+        color: #f39c12 !important;
+        /* Force filled color */
+    }
+
+    /* Hide non-printable elements */
+    .theme-button {
+        display: none !important;
+    }
+
+    /* Ensure links look good */
+    a {
+        text-decoration: none;
+        color: #2c3e50;
     }
 }
 

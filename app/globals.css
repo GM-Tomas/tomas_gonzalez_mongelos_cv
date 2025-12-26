@@ -366,7 +366,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 6px 10px;
     background: #f8f9fa;
     border-radius: 12px;
     border-left: 4px solid #3498db;
@@ -537,7 +537,7 @@ body {
     }
 
     .skill-item {
-        padding: 12px 15px;
+        padding: 6px 10px;
     }
 
     .skill-name {
@@ -571,7 +571,7 @@ body {
     .certification-item,
     .skill-item,
     .language-item {
-        padding: 15px;
+        padding: 6px;
     }
 
     .certification-item h4 {
