@@ -601,157 +601,394 @@ body {
     }
 }
 
-/* Print Styles */
+/* Print Styles - ATS-Friendly Executive Layout */
 @media print {
     @page {
-        margin: 0.5cm;
-        size: auto;
+        size: A4;
+        margin: 1.1cm 1.3cm;
+    }
+
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        animation: none !important;
+        transition: none !important;
     }
 
     body {
-        background: white;
-        padding: 0;
+        background: #ffffff !important;
+        color: #111827 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 9.5pt;
+        line-height: 1.42;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
 
     .container {
-        box-shadow: none;
-        border-radius: 0;
-        max-width: 100%;
-        width: 100%;
-        margin: 0;
+        background: #ffffff !important;
+        border: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        transform: none !important;
+        overflow: visible !important;
     }
 
-    .header {
-        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-        padding: 20px 30px;
-        /* Reduced padding */
-    }
-
-    .name {
-        font-size: 2rem;
-        /* Slighly smaller name */
-        margin-bottom: 5px;
-    }
-
-    .title {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-    }
-
-    .profile-photo {
-        width: 150px;
-        /* Smaller photo */
-        height: 150px;
-    }
-
-    .main-content {
-        padding: 20px 30px;
-        /* Reduced padding */
-    }
-
-    .section {
-        margin-bottom: 20px;
-        /* Reduced margins between sections */
-        break-inside: avoid;
-    }
-
-    .section-title {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-        padding-bottom: 8px;
-        padding-top: 10px;
-        /* Added top padding */
-    }
-
-    .section-content p {
-        font-size: 0.95rem;
-        /* Slightly smaller text */
-    }
-
-    /* Compact lists */
-    .experience-item,
-    .education-item {
-        padding: 15px;
-        margin-bottom: 15px;
-        break-inside: avoid;
-        border: 1px solid #eee;
-        /* Add light border for separation since shadows don't print well */
-        box-shadow: none !important;
-    }
-
-    .responsibilities li {
-        margin-bottom: 4px;
-        font-size: 0.9rem;
-    }
-
-    .certification-item,
-    .skill-item {
-        break-inside: avoid;
-        box-shadow: none !important;
-        border: 1px solid #eee;
-        padding: 6px;
-        /* Ensure compact padding */
-    }
-
-    /* Restore language item styles for print */
-    .language-item {
-        break-inside: avoid;
-        box-shadow: none !important;
-        border: 1px solid #eee;
-        padding: 15px 20px;
-        /* Restored original padding */
-        gap: 15px;
-        /* Increased gap */
-        white-space: nowrap;
-        /* Force single line */
-    }
-
-    /* Force grids to display well */
-    .technical-skills-grid,
-    .certifications-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        /* Force 3 columns for density */
-        gap: 10px;
-    }
-
-    .languages-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        /* Full width to ensure they fit in one line */
-        gap: 10px;
-    }
-
-    .certifications-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 cols for certs maybe better if names are long */
-    }
-
-    .star {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-        color: #ddd !important;
-        /* Force base color */
-    }
-
-    .star.filled {
-        color: #f39c12 !important;
-        /* Force filled color */
-    }
-
-    /* Hide non-printable elements */
-    .theme-button {
+    /* Hide non-ATS / non-printable UI elements */
+    .theme-button,
+    .profile-image,
+    .contact-item i,
+    .section-title i,
+    .skills-legend,
+    .skill-rating,
+    .header::before,
+    .section-title::after {
         display: none !important;
     }
 
-    /* Ensure links look good */
+    /* Clean ATS Header */
+    .header {
+        background: #ffffff !important;
+        color: #111827 !important;
+        padding: 0 0 10px 0 !important;
+        margin-bottom: 12px !important;
+        border-bottom: 2px solid #1e3a8a !important;
+        overflow: visible !important;
+    }
+
+    .profile-section {
+        display: block !important;
+    }
+
+    .name {
+        font-size: 19pt !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        margin-bottom: 2px !important;
+        line-height: 1.15 !important;
+    }
+
+    .title {
+        font-size: 11.5pt !important;
+        font-weight: 600 !important;
+        color: #1e3a8a !important;
+        margin-bottom: 8px !important;
+        opacity: 1 !important;
+    }
+
+    .contact-info {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 3px 0 !important;
+        font-size: 8.5pt !important;
+        color: #374151 !important;
+    }
+
+    .contact-item {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0 !important;
+        font-size: 8.5pt !important;
+        color: #374151 !important;
+        transform: none !important;
+    }
+
+    .contact-item:not(:last-child)::after {
+        content: ' | ';
+        white-space: pre;
+        color: #9ca3af;
+    }
+
+    .contact-item:last-child {
+        font-style: normal !important;
+        opacity: 1 !important;
+    }
+
+    .contact-item a {
+        color: #1e3a8a !important;
+        text-decoration: none !important;
+    }
+
+    .contact-item a[href*="linkedin.com"]::after {
+        content: ' (linkedin.com/in/tomás-gonzalez-mongelós-6134631ab)';
+        color: #374151;
+    }
+
+    /* Main Content & Sections */
+    .main-content {
+        padding: 0 !important;
+    }
+
+    .section {
+        margin-bottom: 12px !important;
+        opacity: 1 !important;
+        transform: none !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    .section-title {
+        display: block !important;
+        font-size: 10.5pt !important;
+        font-weight: 700 !important;
+        color: #1e3a8a !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+        padding: 0 0 3px 0 !important;
+        margin-bottom: 7px !important;
+        letter-spacing: 0.6px !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    .section-content {
+        color: #1f2937 !important;
+        line-height: 1.42 !important;
+    }
+
+    .section-content p {
+        font-size: 9pt !important;
+        color: #1f2937 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .section-content > p + p {
+        margin-top: 6px !important;
+    }
+
+    /* Experience Items - Single Column Executive Format */
+    .experience-item {
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin-bottom: 9px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .experience-item:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .experience-header {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: baseline !important;
+        justify-content: space-between !important;
+        gap: 4px 10px !important;
+        margin-bottom: 3px !important;
+    }
+
+    .job-title {
+        font-size: 9.8pt !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    .company {
+        font-size: 9.2pt !important;
+        font-weight: 600 !important;
+        color: #1e3a8a !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        margin-right: auto !important;
+    }
+
+    .company::before {
+        content: '— ';
+        color: #6b7280;
+        font-weight: 400;
+    }
+
+    .period {
+        font-size: 8.8pt !important;
+        font-weight: 500 !important;
+        color: #4b5563 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    .responsibilities {
+        list-style-type: disc !important;
+        padding-left: 16px !important;
+        margin: 2px 0 0 0 !important;
+    }
+
+    .responsibilities li {
+        padding-left: 2px !important;
+        margin-bottom: 2.5px !important;
+        font-size: 8.8pt !important;
+        color: #1f2937 !important;
+        line-height: 1.38 !important;
+    }
+
+    .responsibilities li::before {
+        content: none !important;
+        display: none !important;
+    }
+
+    /* Technical Skills - Compact Linear Single-Column Text (100% ATS-Safe) */
+    .technical-skills-grid {
+        display: block !important;
+        font-size: 8.9pt !important;
+        line-height: 1.5 !important;
+    }
+
+    .skill-item {
+        display: inline !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .skill-item:not(:last-child)::after {
+        content: ' • ';
+        color: #6b7280;
+    }
+
+    .skill-name {
+        font-size: 8.9pt !important;
+        font-weight: 500 !important;
+        color: #1f2937 !important;
+    }
+
+    /* Languages - Compact Single Column */
+    .languages-grid {
+        display: block !important;
+    }
+
+    .language-item {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+        align-items: baseline !important;
+        gap: 6px !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin-bottom: 3px !important;
+        break-inside: avoid !important;
+        white-space: normal !important;
+    }
+
+    .language {
+        font-size: 9pt !important;
+        font-weight: 600 !important;
+        color: #0f172a !important;
+    }
+
+    .language::after {
+        content: ':';
+    }
+
+    .level {
+        font-size: 8.8pt !important;
+        font-weight: 400 !important;
+        color: #374151 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .level + .level::before {
+        content: '· ';
+        color: #6b7280;
+    }
+
+    /* Education - Single Column Executive Format */
+    .education-item {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: baseline !important;
+        justify-content: space-between !important;
+        gap: 4px 10px !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin-bottom: 5px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .education-item:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .degree {
+        font-size: 9.4pt !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    .institution {
+        font-size: 9pt !important;
+        font-weight: 500 !important;
+        color: #1e3a8a !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        margin-right: auto !important;
+    }
+
+    .institution::before {
+        content: '— ';
+        color: #6b7280;
+    }
+
+    .year {
+        font-size: 8.8pt !important;
+        font-weight: 500 !important;
+        color: #4b5563 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    /* Certifications & Workshops - Single Column Clean List */
+    .certifications-grid {
+        display: block !important;
+        padding-left: 16px !important;
+    }
+
+    .certification-item {
+        display: list-item !important;
+        list-style-type: disc !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin-bottom: 2.5px !important;
+        text-align: left !important;
+        break-inside: avoid !important;
+    }
+
+    .certification-item h4 {
+        display: inline !important;
+        font-size: 8.9pt !important;
+        font-weight: 500 !important;
+        color: #1f2937 !important;
+        line-height: 1.38 !important;
+    }
+
     a {
-        text-decoration: none;
-        color: #2c3e50;
+        text-decoration: none !important;
+        color: #1e3a8a !important;
     }
 }
 

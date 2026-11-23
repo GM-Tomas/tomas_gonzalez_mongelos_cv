@@ -428,7 +428,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const printButton = document.createElement('button');
     printButton.innerHTML = '<i class="fas fa-print"></i>';
     printButton.className = 'theme-button print-button'; // Uses theme-button class so it's hidden on print
-    printButton.title = 'Descargar PDF';
+    printButton.title = 'Download ATS-Friendly PDF';
     printButton.style.cssText = `
         position: fixed;
         bottom: 30px;
@@ -449,6 +449,22 @@ document.addEventListener('DOMContentLoaded', function () {
         align-items: center;
         justify-content: center;
     `;
+
+    // Temporarily restore light mode during print so inline dark-mode styles never override @media print
+    let restoreDarkAfterPrint = false;
+    window.addEventListener('beforeprint', function () {
+        if (isDarkMode) {
+            restoreDarkAfterPrint = true;
+            applyLightMode();
+        }
+    });
+
+    window.addEventListener('afterprint', function () {
+        if (restoreDarkAfterPrint) {
+            restoreDarkAfterPrint = false;
+            applyDarkMode();
+        }
+    });
 
     printButton.addEventListener('click', function () {
         window.print();
