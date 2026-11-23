@@ -605,7 +605,7 @@ body {
 @media print {
     @page {
         size: A4;
-        margin: 1.1cm 1.3cm;
+        margin: 1cm 0.6cm;
     }
 
     * {
@@ -621,7 +621,7 @@ body {
         padding: 0 !important;
         margin: 0 !important;
         font-size: 9.5pt;
-        line-height: 1.42;
+        line-height: 1.44;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
@@ -633,6 +633,7 @@ body {
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 !important;
+        padding: 0.8cm 1.2cm !important;
         opacity: 1 !important;
         transform: none !important;
         overflow: visible !important;
