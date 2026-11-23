@@ -1,5 +1,23 @@
 // Smooth scrolling and interactive animations
 document.addEventListener('DOMContentLoaded', function () {
+    // Automatically calculate and update age from birth date (November 9, 1999)
+    const ageElement = document.getElementById('age');
+    if (ageElement) {
+        const birthYear = 1999;
+        const birthMonth = 11; // November (1-indexed)
+        const birthDay = 9;
+        const today = new Date();
+        let age = today.getFullYear() - birthYear;
+        const currentMonth = today.getMonth() + 1;
+        const currentDay = today.getDate();
+
+        if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
+            age--;
+        }
+
+        ageElement.textContent = age;
+    }
+
     // Add smooth reveal animations on scroll
     const observerOptions = {
         threshold: 0.1,
