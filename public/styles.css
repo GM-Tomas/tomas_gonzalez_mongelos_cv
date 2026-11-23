@@ -211,6 +211,10 @@ body {
     line-height: 1.7;
 }
 
+.section-content > p + p {
+    margin-top: 12px;
+}
+
 /* Experience Styles */
 .experience-item {
     margin-bottom: 35px;
